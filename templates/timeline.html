@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}Timeline - Career & Education Advisor{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-5">Important Dates & Timeline</h1>
+    
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Never Miss a Deadline!</strong> Stay updated with admission dates, entrance exams, and scholarship applications.
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="timeline">
+                {% for event in events %}
+                <div class="card mb-4 border-start border-primary border-5">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <i class="fas fa-calendar-alt text-primary mb-2" style="font-size: 2rem;"></i>
+                                    <h6 class="text-primary">{{ event.date }}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h5 class="card-title">{{ event.event }}</h5>
+                                <p class="card-text">
+                                    {% if 'Engineering' in event.event %}
+                                        Don't miss the engineering entrance exam registration. Required for B.Tech admissions in government colleges.
+                                    {% elif 'Medical' in event.event %}
+                                        Medical entrance exam registration deadline approaching. Essential for MBBS and related courses.
+                                    {% elif 'Commerce' in event.event %}
+                                        Commerce college admissions begin. Perfect for B.Com and BBA aspirants.
+                                    {% elif 'Arts' in event.event %}
+                                        Arts stream counseling starts. Great opportunity for B.A. and humanities students.
+                                    {% endif %}
+                                </p>
+                                <button class="btn btn-outline-primary btn-sm" onclick="alert('Reminder set! We will notify you before this date.')">
+                                    <i class="fas fa-bell me-1"></i> Set Reminder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Entrance Exams</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-primary me-2"></i>
+                            <strong>JEE Main:</strong> For Engineering courses (B.Tech)
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-success me-2"></i>
+                            <strong>NEET:</strong> For Medical courses (MBBS, BDS)
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-info me-2"></i>
+                            <strong>CUET:</strong> For various undergraduate programs
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-arrow-right text-warning me-2"></i>
+                            <strong>State CETs:</strong> State-level entrance tests
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-money-bill-wave me-2"></i>Scholarships</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-award text-warning me-2"></i>
+                            <strong>Merit Scholarships:</strong> Based on academic performance
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-heart text-danger me-2"></i>
+                            <strong>Need-based Aid:</strong> For economically weaker sections
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-users text-primary me-2"></i>
+                            <strong>Category Scholarships:</strong> SC/ST/OBC support schemes
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-female text-info me-2"></i>
+                            <strong>Girl Child Schemes:</strong> Special support for female students
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Pro Tips for Success</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Start preparation early for entrance exams
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Keep all documents ready for applications
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Apply for multiple colleges and courses
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Research scholarship opportunities early
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Visit college campuses if possible
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success me-2"></i>
+                            Stay updated with official notifications
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('college_finder') }}" class="btn btn-primary btn-lg me-3">
+            <i class="fas fa-university me-2"></i>Find Colleges
+        </a>
+        <a href="{{ url_for('course_explorer') }}" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-route me-2"></i>Explore Courses
+        </a>
+    </div>
+</div>
+
+<style>
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #dee2e6;
+    z-index: -1;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Your Results - Career & Education Advisor{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <h1 class="text-center mb-5">Your Personalized Career Guidance</h1>
+            
+            <div class="alert alert-success">
+                <h4 class="alert-heading"><i class="fas fa-trophy me-2"></i>Congratulations!</h4>
+                <p class="mb-0">Based on your responses, we've identified your ideal career path. Here are your personalized recommendations:</p>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-star me-2"></i>Recommended Stream: {{ result.stream_info.name }}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Key Subjects:</h5>
+                            <ul class="list-unstyled">
+                                {% for subject in result.stream_info.subjects %}
+                                <li><i class="fas fa-check text-success me-2"></i>{{ subject }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Career Opportunities:</h5>
+                            <ul class="list-unstyled">
+                                {% for career in result.stream_info.careers %}
+                                <li><i class="fas fa-briefcase text-primary me-2"></i>{{ career }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Recommended Courses</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for course in courses %}
+                        <div class="col-md-6 mb-3">
+                            <div class="border rounded p-3">
+                                <h5 class="text-primary">{{ course.name }}</h5>
+                                <p><strong>Duration:</strong> {{ course.duration }}</p>
+                                <p><strong>Career Options:</strong></p>
+                                <ul class="small">
+                                    {% for job in course.jobs %}
+                                    <li>{{ job }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Your Interest Profile</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for stream, score in result.scores.items() %}
+                        <div class="col-md-4 mb-3">
+                            <h6>{{ stream.title() }}</h6>
+                            <div class="progress">
+                                <div class="progress-bar {% if stream == result.recommended_stream %}bg-success{% else %}bg-secondary{% endif %}" 
+                                     role="progressbar" style="width: {{ (score * 20) }}%">
+                                    {{ score }}/5
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{{ url_for('college_finder') }}" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-university me-2"></i>Find Colleges
+                </a>
+                <a href="{{ url_for('timeline') }}" class="btn btn-outline-primary btn-lg me-3">
+                    <i class="fas fa-calendar me-2"></i>View Timeline
+                </a>
+                <a href="{{ url_for('aptitude_test') }}" class="btn btn-outline-secondary btn-lg">
+                    <i class="fas fa-redo me-2"></i>Retake Test
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
