@@ -3,17 +3,21 @@ import os
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
 @app.route('/services')
 def services():
     return render_template('services.html')
+
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -21,11 +25,13 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
-        # In a real app, you'd save this to a database or send an email
-        return jsonify({'status': 'success', 'message': 'Thank you for your message!'})
+        return jsonify({
+            'status': 'success',
+            'message': 'Thank you for your message!'
+        })
     return render_template('contact.html')
 
+
 if __name__ == '__main__':
-    # Bind to all interfaces (0.0.0.0) for Replit compatibility
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
