@@ -15,15 +15,15 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Flask App"
+args = "Simple HTML Server"
 
 [[workflows.workflow]]
-name = "Flask App"
+name = "Simple HTML Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python app.py"
+args = "python -m http.server 5000"
 waitForPort = 5000
 
 [workflows.workflow.metadata]
