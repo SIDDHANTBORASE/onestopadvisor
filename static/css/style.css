@@ -6,11 +6,11 @@
     align-items: center;
 }
 .hero-section.bg-primary {
-    background-color: #8da7a8 !important;
+    background-color: #1e3a8a !important;
 }
 
 .navbar.bg-primary{
-    background-color: #8da7a8 !important;
+    background-color: #1e3a8a !important;
 }
 
 
@@ -53,13 +53,13 @@ main {
 }
 
 .btn-primary {
-    background-color: #8da7a8;
-    border-color: #8da7a8;
+    background-color: #1e3a8a;
+    border-color: #1e3a8a;
 }
 
 .btn-primary:hover {
-    background-color: #8da7a8;
-    border-color: #8da7a8;
+    background-color: #1e3a8a;
+    border-color: #1e3a8a;
      transform: translateY(-2px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 
