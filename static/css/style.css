@@ -49,18 +49,20 @@ main {
 
 
 .text-primary {
-    color: #6f8585 !important;
+    color: #103f3f !important;
 }
 
 .btn-primary {
-    background-color: #1e3a8a;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
     border-color: #1e3a8a;
+    border-radius: 10px;
 }
 
 .btn-primary:hover {
+
     background-color: #1e3a8a;
     border-color: #1e3a8a;
-     transform: translateY(-2px);
+    transform: translateY(-2px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 
 }
