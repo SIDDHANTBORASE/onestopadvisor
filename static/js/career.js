@@ -1,6 +1,4 @@
-// Career & Education Advisor - Simple JavaScript Version
 
-// Career data
 const careerData = {
     science: {
         name: 'Science',
@@ -31,7 +29,6 @@ const careerData = {
     }
 };
 
-// Government colleges data
 const collegesData = [
     { name: 'Government Engineering College', location: 'Mumbai', courses: ['B.Tech'], cutoff: 85 },
     { name: 'Government Medical College', location: 'Delhi', courses: ['MBBS'], cutoff: 95 },
@@ -40,7 +37,6 @@ const collegesData = [
     { name: 'Government Science College', location: 'Pune', courses: ['B.Sc'], cutoff: 80 }
 ];
 
-// Timeline events
 const timelineEvents = [
     { date: '2025-03-15', event: 'Engineering Entrance Exam Registration Opens' },
     { date: '2025-04-10', event: 'Medical Entrance Exam Registration Deadline' },
@@ -48,7 +44,6 @@ const timelineEvents = [
     { date: '2025-06-15', event: 'Arts Stream Counseling Starts' }
 ];
 
-// Handle aptitude test submission
 document.addEventListener('DOMContentLoaded', function() {
     const aptitudeForm = document.getElementById('aptitudeForm');
     
@@ -56,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         aptitudeForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Count answers for each stream
             const formData = new FormData(aptitudeForm);
             let scores = { science: 0, commerce: 0, arts: 0 };
             
@@ -72,24 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Find recommended stream
             let recommendedStream = Object.keys(scores).reduce((a, b) => 
                 scores[a] > scores[b] ? a : b
             );
             
-            // Save results to localStorage
             localStorage.setItem('aptitudeResult', JSON.stringify({
                 recommended_stream: recommendedStream,
                 scores: scores,
                 stream_info: careerData[recommendedStream]
             }));
             
-            // Redirect to results page
-            window.location.href = 'simple_results.html';
+            window.location.href = 'result.html';
         });
     }
     
-    // Load and display results
     const resultsContent = document.getElementById('resultsContent');
     if (resultsContent) {
         const savedResult = localStorage.getItem('aptitudeResult');
@@ -184,7 +174,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Contact form handling (if present)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
