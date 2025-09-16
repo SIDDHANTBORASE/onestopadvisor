@@ -1,7 +1,5 @@
-// Main JavaScript for One Stop Advisor
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Contact form handling
+
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -29,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
